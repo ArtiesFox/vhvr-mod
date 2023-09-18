@@ -749,6 +749,11 @@ namespace ValheimVRMod.Patches {
     {
         static bool Prefix(InventoryGrid __instance, ref InventoryGrid.Element __result)
         {
+            if (VHVRConfig.NonVrPlayer())
+            {
+                return true;
+            }
+            
             foreach (InventoryGrid.Element element in __instance.m_elements)
             {
                 RectTransform rectTransform = element.m_go.transform as RectTransform;
